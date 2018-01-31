@@ -12,7 +12,7 @@ import ljd.ast.mutator
 import ljd.lua.writer
 
 SOURCE_DIR = "/home/seraphli/Gitlab/KRF/jit_krf"
-OUTPUT_DIR = "./Output"
+OUTPUT_DIR = "./output"
 
 
 def get_path(path):
@@ -62,7 +62,7 @@ def recursive_decompile(source, output):
 
 
 def main():
-    # file = '/home/seraphli/Gitlab/KRF/jit_krf/scripts.lua'
+    # file = '/home/seraphli/Gitlab/KRF/jit_krf/font_db.lua'
     # decompile(file, file.replace(SOURCE_DIR, OUTPUT_DIR))
     recursive_decompile(SOURCE_DIR, get_path(OUTPUT_DIR))
 
