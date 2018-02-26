@@ -7,14 +7,12 @@ import re
 import ljd.ast.nodes as nodes
 import ljd.ast.traverse as traverse
 
-
 CMD_START_STATEMENT = 0
 CMD_END_STATEMENT = 1
 CMD_END_LINE = 3
 CMD_START_BLOCK = 4
 CMD_END_BLOCK = 5
 CMD_WRITE = 6
-
 
 OPERATOR_TYPES = (nodes.BinaryOperator, nodes.UnaryOperator)
 
@@ -261,20 +259,21 @@ class Visitor(traverse.Visitor):
 		if is_left_op:
 			if node.type <= binop.T_LOGICAL_AND:
 				left_parentheses = (
-					node.left.type <= node.type
-					or (node.left.type <= binop.T_LOGICAL_AND
-						and node.type <= binop.T_LOGICAL_AND)
-				) and node.left.type != node.type
+									   node.left.type <= node.type
+									   or (node.left.type <= binop.T_LOGICAL_AND
+										   and node.type <= binop.T_LOGICAL_AND)
+								   ) and node.left.type != node.type
 			else:
 				left_parentheses = node.left.type < node.type
 
 		if is_right_op:
 			if node.type <= nodes.BinaryOperator.T_LOGICAL_AND:
 				right_parentheses = (
-					node.right.type <= node.type
-					or (node.right.type <= binop.T_LOGICAL_AND
-						and node.type <= binop.T_LOGICAL_AND)
-				) and node.right.type != node.type
+										node.right.type <= node.type
+										or (
+											node.right.type <= binop.T_LOGICAL_AND
+											and node.type <= binop.T_LOGICAL_AND)
+									) and node.right.type != node.type
 			else:
 				right_parentheses = node.right.type < node.type
 
@@ -804,8 +803,8 @@ def _process_queue(fd, queue):
 			if next_cmd[0] not in (CMD_END_BLOCK, CMD_START_BLOCK):
 				assert next_cmd[0] == CMD_START_STATEMENT
 
-				if next_cmd[1] != cmd[1]			\
-						or cmd[1] >= STATEMENT_IF	\
+				if next_cmd[1] != cmd[1] \
+						or cmd[1] >= STATEMENT_IF \
 						or next_cmd[1] >= STATEMENT_IF:
 					fd.write("\n")
 		elif cmd[0] == CMD_END_LINE:

@@ -31,8 +31,8 @@ def _eliminate_temporary(slots):
 
 		if not isinstance(assignment, nodes.Assignment):
 			assert isinstance(assignment, (nodes.IteratorWarp,
-							nodes.NumericLoopWarp,
-							nodes.FunctionDefinition))
+										   nodes.NumericLoopWarp,
+										   nodes.FunctionDefinition))
 
 			src = info.references[1].identifier
 			simple.append((info.references, src))
@@ -60,8 +60,8 @@ def _fill_massive_refs(info, simple, massive, iterators):
 	src = info.assignment.expressions.contents[0]
 
 	assert isinstance(src, (nodes.FunctionCall,
-				nodes.Vararg,
-				nodes.Primitive))
+							nodes.Vararg,
+							nodes.Primitive))
 	if isinstance(holder, nodes.Assignment):
 		dst = holder.destinations.contents[0]
 
@@ -120,9 +120,9 @@ def _fill_simple_refs(info, simple, tables):
 
 
 LIST_TYPES = (nodes.VariablesList,
-		nodes.IdentifiersList,
-		nodes.ExpressionsList,
-		nodes.StatementsList)
+			  nodes.IdentifiersList,
+			  nodes.ExpressionsList,
+			  nodes.StatementsList)
 
 
 def _get_holder(path):
