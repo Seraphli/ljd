@@ -56,7 +56,7 @@ def _read_lineinfo(parser, line_offset, lineinfo):
 def _read_upvalue_names(parser, names):
     while len(names) < parser.upvalues_count:
         string = parser.stream.read_zstring()
-        names.append(string.decode("ascii"))
+        names.append(string.decode("utf-8"))
 
     return True
 
