@@ -62,9 +62,9 @@ def recursive_decompile(source, output):
 
 
 def main():
-    # file = '/home/seraphli/Gitlab/KRF/jit_krf/font_db.lua'
-    # decompile(file, file.replace(SOURCE_DIR, OUTPUT_DIR))
-    recursive_decompile(SOURCE_DIR, get_path(OUTPUT_DIR))
+    file = '/home/seraphli/Gitlab/KRF/jit_krf/screen_map.lua'
+    decompile(file, file.replace(SOURCE_DIR, OUTPUT_DIR))
+    # recursive_decompile(SOURCE_DIR, get_path(OUTPUT_DIR))
 
 
 if __name__ == '__main__':

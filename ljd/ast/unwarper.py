@@ -40,6 +40,7 @@ def unwarp(node):
 
 def _run_step(step, node, **kargs):
     for statements in _gather_statements_lists(node):
+        # TODO: CHANGE TO AVOID!!!!
         try:
             statements.contents = step(statements.contents, **kargs)
         except:
@@ -59,6 +60,7 @@ def _gather_statements_lists(node):
 
 def _glue_flows(node):
     for statements in _gather_statements_lists(node):
+        # TODO: CHANGE TO AVOID!!!!
         try:
             blocks = statements.contents
 
@@ -1118,6 +1120,7 @@ def _unwarp_loops(blocks, repeat_until):
         else:
             body = blocks[start_index + 1:end_index]
 
+        # TODO: CHANGE TO AVOID!!!!
         try:
             loop = _unwarp_loop(start, end, body)
             body = loop.statements.contents
@@ -1137,6 +1140,7 @@ def _unwarp_loops(blocks, repeat_until):
         _replace_targets(blocks, body[0], block)
 
         _set_end(body[-1])
+        # TODO: CHANGE TO AVOID!!!!
         try:
             _unwarp_breaks(start, body, end)
         except:

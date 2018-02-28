@@ -241,6 +241,7 @@ class Visitor():
         assert isinstance(nodes_list, list)
 
         for node in nodes_list:
+            # TODO: CHANGE TO AVOID!!!!
             try:
                 self._visit(node)
             except:
